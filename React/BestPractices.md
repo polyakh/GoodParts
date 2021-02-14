@@ -230,3 +230,24 @@ If you are experiencing performance problems and the closures are the cause then
 
 Passing down arrays or objects directly falls into the same category of problems. They fail the reference check so they will trigger a rerender. 
 If you need to pass a fixed array extract it as a constant before the component definition to make sure the same instance is passed each time.
+
+## Testing
+
+### Don’t Rely on Snapshot Tests
+Besides, this, snapshots have only been a cause for failed builds when a component is changed.
+They are a good sanity check but they are not a replacement for good component level tests. I avoid even creating them anymore.
+
+### Test Correct Rendering
+The main thing that your tests should validate is whether the component works as expected. 
+Make sure that it renders correctly with its default props and with ones passed to it.
+Validate that for a given input (props) the function returns the correct result (JSX). Validate that everything you need is on the screen.
+
+### Test Edge Cases
+When you have the basic tests covered, make sure you add some to handle edge cases.
+That would mean passing an empty array to make sure you’re not accessing an index without checking. 
+Throw an error in an API call to make sure the component handles it.
+
+### Write Integration Tests
+Integration tests are meant to validate an entire page or a larger component. It tests whether it works well as an abstraction. 
+They give us the most confident that the application works as expected.
+The components on their own could be working well and their unit tests could be passing. The integration between them could have problems, though.
