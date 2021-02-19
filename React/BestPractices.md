@@ -59,7 +59,7 @@ This also reduces the changes that need to be done if the user gets an extra fie
         return (
             <>
                 {count && <h2>Messages: {count}</h2>}  {/* 👎 Try to avoid short-circuit operators. jsx => 0  */}
-                {count ? <h2>Messages: {count}</h2> : null}  {/* 👎 Try to avoid short-circuit operators */}
+                {count ? <h2>Messages: {count}</h2> : null}  {/* 👍 Use a ternary instead*/}
             </>);
 }
 ```
